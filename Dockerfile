@@ -1,4 +1,4 @@
-FROM archlinux:latest AS arch
+FROM archlinux:base-20210207.0.15200 AS arch
 RUN pacman -Syu base-devel git --noconfirm --overwrite '*' && sed -i '/E_ROOT/d' /usr/bin/makepkg
 RUN useradd -m -G wheel -s /bin/bash build
 RUN perl -i -pe 's/# (%wheel ALL=\(ALL\) NOPASSWD: ALL)/$1/' /etc/sudoers
