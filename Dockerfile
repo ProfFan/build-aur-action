@@ -13,7 +13,8 @@ USER build
 
 RUN echo "why this is cached"
 
-RUN cd /tmp && git clone https://aur.archlinux.org/yay.git
+RUN mkdir -p /workdir
+RUN cd /workdir && git clone https://aur.archlinux.org/yay.git
 RUN cd yay && source PKGBUILD && pacman -Syu --noconfirm && pacman -S --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
 USER root
