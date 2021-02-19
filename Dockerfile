@@ -10,6 +10,9 @@ RUN perl -i -pe 's/# (%wheel ALL=\(ALL\) NOPASSWD: ALL)/$1/' /etc/sudoers
 USER build
 #RUN cd /tmp && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si --noconfirm
 # https://bbs.archlinux.org/viewtopic.php?id=229027, eli schwartz
+
+RUN echo "why this is cached"
+
 RUN cd /tmp && git clone https://aur.archlinux.org/yay.git
 RUN cd yay && source PKGBUILD && pacman -Syu --noconfirm && pacman -S --noconfirm --needed --asdeps "${makedepends[@]}" "${depends[@]}"
 
